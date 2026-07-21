@@ -1,0 +1,92 @@
+/* Page */
+
+.manage-users-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f4f7fc;
+}
+
+/* Heading */
+
+.manage-users-page h1 {
+  font-size: 36px;
+  color: #1f2937;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Table */
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.users-table thead {
+  background: #111827;
+}
+
+.users-table thead th {
+  color: white;
+  padding: 18px;
+  text-align: left;
+  font-size: 17px;
+}
+
+.users-table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: 0.3s;
+}
+
+.users-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.users-table td {
+  padding: 18px;
+  font-size: 16px;
+}
+
+/* Role Badge */
+
+.role-admin {
+  background: #10b981;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.role-user {
+  background: #3b82f6;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width:768px){
+
+.manage-users-page{
+padding:20px;
+}
+
+.users-table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+.manage-users-page h1{
+font-size:28px;
+}
+
+}

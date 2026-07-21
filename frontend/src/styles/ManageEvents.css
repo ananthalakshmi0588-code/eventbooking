@@ -1,0 +1,111 @@
+/* Page */
+.manage-events{
+    padding:30px;
+    background:#f4f7fb;
+    min-height:100vh;
+    margin-left:250px;
+}
+
+/* Header */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    font-size:34px;
+    color:#111827;
+}
+
+/* Add Button */
+.add-btn{
+    background:#2563eb;
+    color:white;
+    padding:12px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.add-btn:hover{
+    background:#1d4ed8;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+thead{
+    background:#111827;
+    color:white;
+}
+
+th, td{
+    padding:16px;
+    text-align:left;
+    border-bottom:1px solid #e5e7eb;
+}
+
+tbody tr:hover{
+    background:#f9fafb;
+}
+
+/* Image */
+td img{
+    width:90px;
+    height:60px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* Action Buttons */
+.edit-btn{
+    background:#f59e0b;
+    color:white;
+    padding:8px 14px;
+    border-radius:6px;
+    text-decoration:none;
+    margin-right:10px;
+    font-size:14px;
+}
+
+.edit-btn:hover{
+    background:#d97706;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* Responsive */
+@media(max-width:900px){
+
+.manage-events{
+    margin-left:0;
+    padding:20px;
+}
+
+table{
+    display:block;
+    overflow-x:auto;
+}
+
+}

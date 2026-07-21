@@ -1,0 +1,157 @@
+/* ===========================
+   REGISTER PAGE
+=========================== */
+
+.register-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#eef5ff,#dbeafe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.register-container {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
+    animation: fadeUp .8s ease;
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #2563eb;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+.register-container p {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #374151;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+
+.register-btn {
+    width: 100%;
+    padding: 14px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.register-btn:hover {
+    background: #1d4ed8;
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-footer a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.register-page{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+background:linear-gradient(135deg,#dbeafe,#bfdbfe,#eff6ff);
+
+}
+
+.register-card{
+
+width:480px;
+
+padding:45px;
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(18px);
+
+border-radius:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+animation:fade .8s ease;
+
+}
+
+.register-card h2{
+
+text-align:center;
+
+color:#2563eb;
+
+margin-bottom:10px;
+
+}
+
+.register-card p{
+
+text-align:center;
+
+margin-bottom:30px;
+
+color:#666;
+
+}

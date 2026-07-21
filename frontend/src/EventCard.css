@@ -1,0 +1,72 @@
+/* ===========================
+   EVENT CARD
+=========================== */
+
+.event-card{
+    width:100%;
+    max-width:360px;
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:.3s;
+    margin:auto;
+}
+
+.event-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+}
+
+/* IMAGE */
+
+.event-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+}
+
+/* CONTENT */
+
+.event-content{
+    padding:20px;
+}
+
+.event-content h3{
+    font-size:22px;
+    color:#f57c00;
+    margin-bottom:12px;
+}
+
+.event-content p{
+    color:#555;
+    line-height:1.6;
+    margin-bottom:10px;
+}
+
+.event-price{
+    color:#ff9800;
+    font-size:24px;
+    font-weight:700;
+}
+
+.book-btn{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff9800,#ffc107);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.book-btn:hover{
+    background:linear-gradient(135deg,#ef6c00,#ff9800);
+    transform:scale(1.03);
+}

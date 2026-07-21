@@ -1,0 +1,49 @@
+.add-event-page{
+    min-height:100vh;
+    background:#f4f7fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.add-event-card{
+    width:700px;
+    background:#fff;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.12);
+}
+
+.add-event-card h1{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.add-event-card form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.add-event-card input,
+.add-event-card textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.add-event-card button{
+    padding:14px;
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    font-size:17px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.add-event-card button:hover{
+    background:#1d4ed8;
+}
