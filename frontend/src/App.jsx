@@ -6,8 +6,8 @@ import "./Gallery.css";
 import "./Home.css";
 import "./index.css";
 import "./Navbar.css";
-import "./login.css";
-import "./register.css";
+import "./Login.css";
+import "./Register.css";
 import "./Booking.css";
 import "./Dashboard.css";
 import "./styles/Admin.css";
@@ -16,7 +16,7 @@ import "./styles/ManageUsers.css";
 import "./styles/ManageBookings.css";
 import "./styles/AddEvent.css";
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 // Components
 import Navbar from "./components/Navbar";
