@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Booking = require("../models/booking");
-const Event = require("../models/eventModel");
+const Event = require("../models/Event");
 const auth = require("../middleware/authMiddleware");
 
 // ==========================
