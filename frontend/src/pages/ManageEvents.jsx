@@ -56,11 +56,7 @@ function ManageEvents() {
         <Link to="/admin/events/add" className="add-btn">
           + Add Event
         </Link>
-     <Link to={`/admin/events/edit/${event._id}`}>
-    <button className="edit-btn">
-        Edit
-    </button>
-</Link>
+     
 
       </div>
 

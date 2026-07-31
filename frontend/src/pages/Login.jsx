@@ -21,7 +21,10 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await API.post("/auth/login", form);
+     const res = await API.post("/auth/login", {
+        email: form.email.trim(),
+        password: form.password,
+      });
 
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));

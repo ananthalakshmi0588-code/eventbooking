@@ -14,7 +14,7 @@ function ManageBookings() {
 
       const res = await API.get("/bookings");
 
-      setBookings(res.data);
+      setBookings(res.data.data ||res.data);
 
     } catch (err) {
       console.log(err);

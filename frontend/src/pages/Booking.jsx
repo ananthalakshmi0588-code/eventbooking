@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import API from "../services/api";
 import "../Booking.css";
 
 function Booking() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const loggedUser = JSON.parse(localStorage.getItem("user"));
 
@@ -62,12 +63,13 @@ function Booking() {
       console.log("Booking Data:", booking);
 
       await API.post("/bookings", {
-    eventId: id,
-    tickets: Number(booking.tickets),
-    totalAmount: booking.totalAmount,
-});
+        eventId: id,
+        tickets: Number(booking.tickets),
+        totalAmount: booking.totalAmount,
+      });
 
       alert("🎉 Booking Successful!");
+      navigate("/dashboard");
 
     } catch (err) {
       console.log(err.response?.data);

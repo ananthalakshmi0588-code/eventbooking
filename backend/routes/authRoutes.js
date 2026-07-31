@@ -4,14 +4,45 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
+// Seed default admin if missing
+const seedAdmin = async () => {
+  try {
+    const adminExists = await User.findOne({ role: "admin" });
+    if (!adminExists) {
+      const admin = new User({
+        name: "Admin User",
+        email: "admin@gmail.com",
+        password: "admin123",
+        role: "admin",
+      });
+      await admin.save();
+      console.log("Default Admin Seeded: admin@gmail.com / admin123");
+    }
+  } catch (err) {
+    console.error("Admin Seeding Error:", err.message);
+  }
+};
+seedAdmin();
+
 // Register
 router.post("/register", async (req, res) => {
   console.log("Incoming body:", req.body);
 
   try {
-    const { name, email, password } = req.body;
+    let { name, email, password } = req.body;
 
-    const exists = await User.findOne({ email });
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    const cleanEmail = email.trim().toLowerCase();
+
+    const exists = await User.findOne({
+      email: { $regex: new RegExp("^" + cleanEmail.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "i") }
+    });
 
     if (exists) {
       return res.status(400).json({
@@ -21,14 +52,14 @@ router.post("/register", async (req, res) => {
     }
 
     const user = new User({
-      name,
-      email,
+      name: name.trim(),
+      email: cleanEmail,
       password,
     });
 
     await user.save();
 
-    console.log("User created successfully");
+    console.log("User created successfully:", cleanEmail);
 
     res.status(201).json({
       success: true,
@@ -36,8 +67,7 @@ router.post("/register", async (req, res) => {
     });
 
   } catch (err) {
-    console.error("REGISTER ERROR:");
-    console.error(err);
+    console.error("REGISTER ERROR:", err);
 
     res.status(500).json({
       success: false,
@@ -51,27 +81,34 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log("Email:", email);
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Please enter both email and password",
+      });
+    }
 
-    const user = await User.findOne({ email });
+    const cleanEmail = email.trim().toLowerCase();
 
-    console.log("User:", user);
+    console.log("Login attempt email:", cleanEmail);
+
+    const user = await User.findOne({
+      email: { $regex: new RegExp("^" + cleanEmail.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "$", "i") }
+    });
 
     if (!user) {
       return res.status(400).json({
         success: false,
-        message: "User not found",
+        message: `No account found for "${email.trim()}". Check for typos (e.g. gmail.com) or register a new account.`,
       });
     }
 
     const match = await user.comparePassword(password);
 
-    console.log("Password Match:", match);
-
     if (!match) {
       return res.status(400).json({
         success: false,
-        message: "Password Incorrect",
+        message: "Incorrect password. Please try again.",
       });
     }
 
@@ -95,6 +132,7 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
 // Get All Users
 router.get("/users", async (req, res) => {
   try {

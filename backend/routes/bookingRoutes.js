@@ -55,27 +55,55 @@ router.post("/", auth, async (req, res) => {
 });
 
 // ==========================
-// MY BOOKINGS
+// MY BOOKINGS (Logged In User)
 // ==========================
-router.get("/", auth, async (req, res) => {
+router.get("/my-bookings", auth, async (req, res) => {
   try {
-    const bookings = await Booking.find()
-      .populate("user", "name email")
-      .populate("event", "title date");
+    const bookings = await Booking.find({ user: req.user._id })
+      .populate("event")
+      .sort({ createdAt: -1 });
 
-    res.status(200).json(bookings);
+    res.status(200).json({
+      success: true,
+      data: bookings,
+    });
 
   } catch (err) {
     console.log(err);
 
     res.status(500).json({
+      success: false,
       message: err.message,
     });
   }
 });
 
 // ==========================
-// DELETE BOOKING
+// GET ALL BOOKINGS (Admin)
+// ==========================
+router.get("/", auth, async (req, res) => {
+  try {
+    const bookings = await Booking.find()
+      .populate("user", "name email")
+      .populate("event", "title date location image");
+
+    res.status(200).json({
+      success: true,
+      data: bookings,
+    });
+
+  } catch (err) {
+    console.log(err);
+
+    res.status(500).json({
+      success: false,
+      message: err.message,
+    });
+  }
+});
+
+// ==========================
+// DELETE / CANCEL BOOKING
 // ==========================
 router.delete("/:id", auth, async (req, res) => {
   try {
@@ -109,25 +137,6 @@ router.delete("/:id", auth, async (req, res) => {
       success: false,
       message: err.message,
     });
-  }
-});
-// Get All Bookings (Admin)
-
-router.get("/", auth, async (req, res) => {
-  try {
-
-    const bookings = await Booking.find()
-      .populate("user", "name email")
-      .populate("event", "title date");
-
-    res.json(bookings);
-
-  } catch (err) {
-
-    res.status(500).json({
-      message: err.message,
-    });
-
   }
 });
 

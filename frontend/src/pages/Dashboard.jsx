@@ -63,10 +63,7 @@ setBookings(res.data.data);
           <p>Your Event Booking Dashboard</p>
         </div>
 
-        <button className="logout-btn" onClick={logout}>
-          Logout
-        </button>
-
+        
       </div>
 
       <div className="stats">

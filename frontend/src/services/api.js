@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://eventbooking-nnuf.onrender.com/",
+  
+  baseURL: "https://eventbooking-85x3.onrender.com/api",
+
 });
 
 API.interceptors.request.use((config) => {

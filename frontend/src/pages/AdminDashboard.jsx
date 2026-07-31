@@ -17,21 +17,25 @@ function AdminDashboard() {
 
   const loadStats = async () => {
     try {
-      const [events, bookings, users] = await Promise.all([
+      const [eventsRes, bookingsRes, usersRes] = await Promise.all([
         API.get("/events"),
         API.get("/bookings"),
         API.get("/users"),
       ]);
 
-      const revenue = bookings.data.reduce(
-        (sum, booking) => sum + booking.totalAmount,
+      const eventsList = eventsRes.data.data || eventsRes.data || [];
+      const bookingsList = bookingsRes.data.data || bookingsRes.data || [];
+      const usersList = usersRes.data.data || usersRes.data || [];
+
+      const revenue = bookingsList.reduce(
+        (sum, booking) => sum + (booking.totalAmount || 0),
         0
       );
 
       setStats({
-        events: events.data.length,
-        bookings: bookings.data.length,
-        users: users.data.length,
+        events: eventsList.length,
+        bookings: bookingsList.length,
+        users: usersList.length,
         revenue,
       });
 
